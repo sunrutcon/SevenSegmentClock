@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 
 #define SEG_CHAR_MIN	0
@@ -114,35 +115,39 @@ char wireOutPins(char segChar);
 void segArduinoInit();
 void arduinoWriteToSevSegPins(char charToWrite);
 
+void testWriteToSevSegPins(char charToWrite);
+
 /**
  * Set segment to test display
  * */
 void setSegTest(char * testSeg, char arlen){
-	char i;
+	int i;
 	for(i=0; i< arlen; i++)
 		sev_seg_buff[testSeg[i]]='0';
+		
 }
 
 /**
  * Clear segment from display, turn off
  * */
 void clearSegTest(char * testSeg, char arlen){
-	char i;
+	int i;
 	for(i=0; i< arlen; i++){
 		//printf(" %d , ", testSeg[i]);
 		sev_seg_buff[testSeg[i]]=' ';
+		
 	}
 }
 
-#ifdef CTEST
+
 /**
  * Arduino functions
  * */
 void digitalWrite(char pin, char pinState);
 void pinMode(char pin, char mode);
-#endif
 
-#ifdef CTEST
+
+
 void digitalWrite(char pin, char pinState){
 	printf("\n Arduino pin %d set to %s \n", pin, pinState==0 ? "LOW" : "HIGH");
 }
@@ -150,4 +155,4 @@ void digitalWrite(char pin, char pinState){
 void pinMode(char pin, char mode){
 	printf("\n Arduino pin %d set to %s \n", pin, mode==0 ? "INPUT" : "OUTPUT");
 }
-#endif
+
