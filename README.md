@@ -1,4 +1,4 @@
 sev_seg
 =======
 
-simulation of 7 segment display in command prompt
+Simulation of 7 segment display clock in command prompt.
